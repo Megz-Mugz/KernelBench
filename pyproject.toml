@@ -11,11 +11,9 @@ requires-python = "==3.10.*"
 dependencies = [
     # Frameworks
     "torch>=2.9.0",
-
     "transformers",
     "datasets>=2.19.0",
     "modal",
-
     # helper
     "tqdm",
     "packaging",
@@ -24,12 +22,10 @@ dependencies = [
     "ninja",
     "tomli",
     "tabulate",
-
     # Numerics
     "einops",
     "python-dotenv",
     "numpy",
-
     # LLM providers
     "openai",
     "litellm[proxy]",
@@ -49,6 +45,10 @@ dev = [
     "ruff",
 ]
 
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/rocm7.1"
+
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -56,3 +56,6 @@ include = ["kernelbench*"]
 
 [tool.setuptools.package-data]
 kernelbench = ["prompts/**/*"]
+
+[tool.uv.sources]
+torch = { index = "pytorch" }
